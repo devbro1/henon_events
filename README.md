@@ -18,3 +18,10 @@ to start backend server:
 cd backend
 PORT=80 DEBUG=run:* npm start
 ```
+
+## frontned
+to start frontend:
+```
+cd frontend
+yarn dev --host
+```
