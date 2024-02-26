@@ -25,9 +25,9 @@ router.post('/',
         start_date: req.body.start_date,
         end_date: req.body.end_date,
         type: req.body.type,
-      }).first());
+      }));
 
-    res.send({ message: 'new event was created', id: result.id });
+    res.send({ message: 'new event was created', id: result.rows[0].id });
   });
 
 router.get('/:id', param('id').notEmpty().custom(id => {
