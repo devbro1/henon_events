@@ -8,7 +8,7 @@ import { Styles } from './form.styles';
 import DateTimePicker from '../utils/DateTimePicker/DateTimePicker.index';
 import { RestAPI } from 'scripts/api';
 import { APIPath } from 'data';
-import { alertService } from 'helperComps/Alert/AlertService';
+import { toast } from 'react-toastify';
 
 function AddEventComp() {
     const validationSchema = yup.object().shape({
@@ -36,25 +36,25 @@ function AddEventComp() {
                         message: RestAPI.getErrorMessage('', Object.keys(value)[0], Object.values(value)[0]),
                     });
                 });
-                alertService.error(error.response.data.message || 'Something went wrong, please try again');
+                toast(error.response.data.message || 'Something went wrong, please try again');
             },
             onSuccess: (data: any) => {
-                alertService.success('Event was created successfully');
+                toast('Event was created successfully');
             },
         },
     );
 
     return (<FormComp
         onSubmit={handleSubmit(() => {
-            mutator.mutate(getValues()); 
+            mutator.mutate(getValues());
         })}
         title="Add Event"
         className=""
         buttonTitle="Create"
     >
         <TextInputComp className={Styles.fields} name="title" control={control} type="text" title="Title" />
-        <DateTimePicker className={Styles.fields} name="start_date" control={control} title="Start Date" showTime={false} />
-        <DateTimePicker className={Styles.fields} name="end_date" control={control} title="End Date" showTime={false} />
+        <DateTimePicker className={Styles.fields} name="start_date" control={control} title="Start Date" showTime={false} outputFormat='YYYY-MM-DD' />
+        <DateTimePicker className={Styles.fields} name="end_date" control={control} title="End Date" showTime={false} outputFormat='YYYY-MM-DD' />
         <TextInputComp className={Styles.fields} name="type" control={control} type="text" title="Type" />
 
     </FormComp>);
