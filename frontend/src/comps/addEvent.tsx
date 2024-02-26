@@ -7,8 +7,9 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { Styles } from './form.styles';
 import DateTimePicker from '../utils/DateTimePicker/DateTimePicker.index';
 import { RestAPI } from 'scripts/api';
-import { APIPath } from 'data';
+import { APIPath, type_options } from 'data';
 import { toast } from 'react-toastify';
+import { SelectComp } from '../utils';
 
 function AddEventComp() {
     const validationSchema = yup.object().shape({
@@ -55,7 +56,7 @@ function AddEventComp() {
         <TextInputComp className={Styles.fields} name="title" control={control} type="text" title="Title" />
         <DateTimePicker className={Styles.fields} name="start_date" control={control} title="Start Date" showTime={false} outputFormat='YYYY-MM-DD' />
         <DateTimePicker className={Styles.fields} name="end_date" control={control} title="End Date" showTime={false} outputFormat='YYYY-MM-DD' />
-        <TextInputComp className={Styles.fields} name="type" control={control} type="text" title="Type" />
+        <SelectComp className={Styles.fields} name="type" control={control} type="text" title="Type" options={type_options}/>
 
     </FormComp>);
 }

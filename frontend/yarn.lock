@@ -2113,10 +2113,10 @@ react-select@^5.8.0:
     react-transition-group "^4.3.0"
     use-isomorphic-layout-effect "^1.1.2"
 
-react-timelines-issa@^2.7.22:
-  version "2.7.22"
-  resolved "https://registry.yarnpkg.com/react-timelines-issa/-/react-timelines-issa-2.7.22.tgz#518379f4c9277426adb50f8b1b3acba5772892ba"
-  integrity sha512-/QsGlIIvb6oLu5xAyNpghgnyYEWpy0VPh9OXEC5Nr3CWfouN/uVf7JI8U7mCutQS7DzzfBv53QY3+naTFlgAMg==
+react-timelines@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/react-timelines/-/react-timelines-2.6.1.tgz#28c0b2418519fb3967e48f0b862aaf1bca24510b"
+  integrity sha512-z22XOLp1a0iFIAneP6CxX1QasQL3t5BXsCW1LZeln/tQuJPyfYW8uZyCZSPYyRczenhXvUMmyNvHWrXkSI0DRA==
   dependencies:
     prop-types "^15.7.2"
 

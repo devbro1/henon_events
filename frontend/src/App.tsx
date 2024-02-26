@@ -1,6 +1,6 @@
 import React, { Suspense, useContext, useEffect } from 'react';
 import { useState } from 'react'
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ToastContainer } from 'react-toastify';
@@ -40,7 +40,7 @@ function App() {
             <Route path={'/add-event/*'} element={<AddEventComp />} />
             <Route path={'/events-list/*'} element={<EventsListComp />} />
             <Route path={'/events-timeline/*'} element={<EventsTimelineComp />} />
-            <Route path={'/'} element={<div>Welcome</div>} />
+            <Route path={'/'} element={<Navigate to='/add-event/' />} />
             <Route path={'*'} element={<div>NOT FOUND</div>} />
           </Routes>
         </div>
