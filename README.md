@@ -12,6 +12,8 @@ cd backend
 psql -U postgres -h db -d practice_db_1 -f ./database/db.sql
 ```
 
+If you do not want to install psql command, you can always connect to db container and run commands from there.
+
 
 ## start backend
 to start backend server:
