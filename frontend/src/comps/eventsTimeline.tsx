@@ -1,12 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RestAPI } from 'scripts/api';
-import { APIPath, RoutePath } from 'data';
-
+import { APIPath} from 'data';
 import Timeline from 'react-timelines';
 import 'react-timelines/lib/css/style.css'
-import { START_YEAR, NUM_OF_YEARS, NUM_OF_TRACKS } from './constants';
-import { buildTimebar, buildTrack } from './builders';
-import { fill } from './utils';
+import { buildTimebar } from './builders';
 import { type_options } from '../data';
 
 
@@ -20,18 +17,8 @@ function EventsTimelineComp() {
 
     const [events, setEvents] = useState([]);
     const [tracks, setTracks] = useState([]);
-    const [start, setStart] = useState(new Date(`${START_YEAR}`));
-    const [end, setEnd] = useState(new Date(`${START_YEAR + NUM_OF_YEARS}`));
-
-    const tracksById = fill(5).reduce((acc, i) => {
-
-        const track = buildTrack(i+1)
-        acc[track.id] = track
-        return acc
-      }, {});
-    
-    //const tracks = Object.values(tracksById);
-    //console.log(Object.values(tracksById));
+    const [start, setStart] = useState(new Date(`2023`));
+    const [end, setEnd] = useState(new Date(`2025`));
 
     useEffect(() => {
         RestAPI.get(APIPath.events.index()).then(({ data }) => {
