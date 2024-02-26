@@ -4,7 +4,11 @@ const { body, param, validationResult } = require('express-validator');
 var db = require('../database/db');
 
 router.get('/', async function (req, res, next) {
-  result = await db.pg('events').select('*').paginate(req);
+  result = await db.pg('events').select([
+    'id',
+    'type',
+    db.pg.raw("to_char(start_date, 'YYYY-MM-DD') as start_date"),
+    db.pg.raw("to_char(end_date, 'YYYY-MM-DD') as end_date")]).paginate(req);
   res.send(result);
 });
 
