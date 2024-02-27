@@ -6,19 +6,21 @@ const pg = knex({
   searchPath: ['knex', 'public'],
 });
 
-knex.QueryBuilder.extend("paginate", function (request) {
+knex.QueryBuilder.extend("paginate", async function (request) {
   limit = request.query.page?.per_page || 1000;
-  limit = Math.floor(limit,1000);
+  limit = Math.floor(limit, 1000);
 
   page = request.query.page?.number || 1;
   offset = (page - 1) * limit;
 
-  const raw_sql = this.toSQL().sql;
+  const raw_sql = this.toSQL().toNative();
+
+  const cc = this.clone();
 
   return Promise.all([
     pg
       .count('t.* as count')
-      .fromRaw('(' + raw_sql + ') as t')
+      .from(cc.as('t'))
       .first(),
     this.offset(offset).limit(limit)
   ])
