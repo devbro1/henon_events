@@ -19,7 +19,7 @@ function EventsListComp() {
             title: 'event ID',
             field: 'id',
             value: (row) => (row.id),
-            filter: false,
+            filter: true,
             className: 'w-12',
         },
         {
@@ -27,8 +27,15 @@ function EventsListComp() {
             sortable: true,
             field: 'title',
             value: (row) => row.title,
-
-            filter: false,
+            filter: true,
+            className: 'w-48',
+        },
+        {
+            title: 'Type',
+            sortable: true,
+            field: 'type',
+            value: (row) => row.type,
+            filter: true,
             className: 'w-48',
         },
         {
@@ -36,7 +43,6 @@ function EventsListComp() {
             sortable: true,
             field: 'start_date',
             value: (row) => row.start_date,
-
             filter: false,
             className: 'w-48',
         },
@@ -45,7 +51,6 @@ function EventsListComp() {
             sortable: true,
             field: 'end_date',
             value: (row) => row.end_date,
-
             filter: false,
             className: 'w-48',
         },

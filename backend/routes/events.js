@@ -12,6 +12,10 @@ router.get('/', async function (req, res, next) {
     db.pg.raw("to_char(end_date, 'YYYY-MM-DD') as end_date")]);
   
   query = query.where((qb)=> {
+    if(req.query.filter?.id) {
+      qb.where('id',req.query.filter.id);
+    }
+
     if(req.query.filter?.title) {
       qb.whereLike('title',req.query.filter.title + '%');
     }
